@@ -14,7 +14,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_25_174737) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "currences", force: :cascade do |t|
+  create_table "currencies", force: :cascade do |t|
     t.string "title", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -25,11 +25,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_25_174737) do
     t.string "description"
     t.integer "status", null: false
     t.integer "stock", null: false
-    t.float "price", null: false
-    t.bigint "currences_id"
+    t.decimal "price", precision: 12, scale: 6, null: false
+    t.bigint "currencies_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["currences_id"], name: "index_frames_on_currences_id"
+    t.index ["currencies_id"], name: "index_frames_on_currencies_id"
   end
 
   create_table "lenses", force: :cascade do |t|
@@ -39,10 +39,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_25_174737) do
     t.integer "lens_type", null: false
     t.integer "stock", null: false
     t.decimal "price", precision: 12, scale: 6, null: false
-    t.bigint "currences_id"
+    t.bigint "currencies_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["currences_id"], name: "index_lenses_on_currences_id"
+    t.index ["currencies_id"], name: "index_lenses_on_currencies_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -53,6 +53,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_25_174737) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "frames", "currences", column: "currences_id"
-  add_foreign_key "lenses", "currences", column: "currences_id"
+  add_foreign_key "frames", "currencies", column: "currencies_id"
+  add_foreign_key "lenses", "currencies", column: "currencies_id"
 end

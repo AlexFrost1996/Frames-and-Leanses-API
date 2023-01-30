@@ -22,3 +22,11 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+rails db:create
+rails db:migrate
+rails db:seed
+
+rails c
+
+Frame.create!(name: 'moon', status: :active, stock: 40, price: 21.22, currencies_id: 3)

@@ -1,6 +1,6 @@
-class CreateCurrences < ActiveRecord::Migration[7.0]
+class CreateCurrencies < ActiveRecord::Migration[7.0]
   def change
-    create_table :currences do |t|
+    create_table :currencies do |t|
       t.string :title, null: false, unique: true
       
       t.timestamps
