@@ -6,7 +6,7 @@ class CreateFrames < ActiveRecord::Migration[7.0]
       t.integer :status, null: false
       t.integer :stock, null: false
       t.decimal :price, precision: 12, scale: 6, null: false
-      t.belongs_to :currencies, foreign_key: true
+      t.belongs_to :currency, null: false, foreign_key: true, on_delete: :nullify
 
       t.timestamps
     end
